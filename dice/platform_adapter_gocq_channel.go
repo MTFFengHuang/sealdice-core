@@ -148,3 +148,26 @@ func (pa *PlatformAdapterGocq) SendToChannelGroup(ctx *MsgContext, userID string
 		socketSendText(pa.Socket, string(a))
 	}
 }
+
+    // 在适当的位置添加对 guild 消息的处理逻辑
+    // 示例代码
+
+    func processChannelEvent(event *Event) {
+        switch event.Type {
+        case "private_message":
+            processPrivateMessage(event)
+        case "group_message":
+            processGroupMessage(event)
+        case "guild_message":
+            processGuildMessage(event)  // 新增处理频道消息的函数
+        default:
+            log.Printf("Unsupported event type: %s", event.Type)
+        }
+    }
+
+    func processGuildMessage(event *Event) {
+        // 实现处理频道消息的逻辑
+        log.Printf("Processing guild message: %s", event.Content)
+        // 其他处理逻辑
+    }
+    
