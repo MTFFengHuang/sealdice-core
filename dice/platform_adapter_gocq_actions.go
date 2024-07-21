@@ -740,3 +740,26 @@ func textAssetsConvert(s string) string {
 	text = ImageRewrite(text, solve2)
 	return CQRewrite(text, solve)
 }
+
+    // 在适当的位置添加对 guild 消息的处理逻辑
+    // 示例代码
+
+    func performAction(action *Action) {
+        switch action.Type {
+        case "send_private_msg":
+            sendPrivateMsg(action)
+        case "send_group_msg":
+            sendGroupMsg(action)
+        case "send_guild_msg":
+            sendGuildMsg(action)  // 新增处理发送频道消息的函数
+        default:
+            log.Printf("Unsupported action type: %s", action.Type)
+        }
+    }
+
+    func sendGuildMsg(action *Action) {
+        // 实现发送频道消息的逻辑
+        log.Printf("Sending guild message: %s", action.Content)
+        // 其他处理逻辑
+    }
+    
