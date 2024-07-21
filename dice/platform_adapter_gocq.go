@@ -1356,3 +1356,26 @@ func (pa *PlatformAdapterGocq) packTempCtx(msgQQ *MessageQQ, msg *Message) *MsgC
 
 	return ctx
 }
+
+    // 添加对 message_type=guild 的处理逻辑
+    // 示例代码，根据现有的处理逻辑进行扩展
+
+    func handleMessage(msg *Message) {
+        switch msg.MessageType {
+        case "private":
+            handlePrivateMessage(msg)
+        case "group":
+            handleGroupMessage(msg)
+        case "guild":
+            handleGuildMessage(msg)  // 新增处理频道消息的函数
+        default:
+            log.Printf("Unsupported message type: %s", msg.MessageType)
+        }
+    }
+
+    func handleGuildMessage(msg *Message) {
+        // 实现处理频道消息的逻辑
+        log.Printf("Handling guild message: %s", msg.Content)
+        // 其他处理逻辑
+    }
+    
