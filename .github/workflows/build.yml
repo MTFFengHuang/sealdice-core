@@ -25,13 +25,10 @@ jobs:
       run: go version
 
     - name: Download dependencies
-      run: go mod download
+      run: |
+        go mod tidy
+        go mod download
 
     - name: Build project
-      run: go build -o sealdice-core
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: sealdice-core
-        path: sealdice-core
+      run: |
+        go build -v -o sealdice-core
